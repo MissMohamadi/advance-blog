@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic import DetailView, FormView, CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import Post
 from .forms import PostForm
@@ -59,3 +61,7 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
     success_url = "/blog/post/"
+
+@api_view()
+def api_list_view(request):
+    return Response("OK")
