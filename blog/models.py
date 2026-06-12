@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-User = get_user_model()
+# User = get_user_model()
 
 class Post(models.Model):
     '''
@@ -12,7 +12,7 @@ class Post(models.Model):
     status = models.BooleanField()
     image = models.ImageField(null=True, blank=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey('accounts.Profile', on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField()

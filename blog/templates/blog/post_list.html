@@ -15,7 +15,7 @@
     {{ post.title }}: {{ post.content }}
     </h3>
     <br/>
-    <p>{{ post.author }}</p>
+    <p>{{ post.author.first_name }} {{ post.author.last_name }}</p>
     <hr/>
     {% endfor %}
 </div>

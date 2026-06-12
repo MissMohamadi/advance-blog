@@ -18,9 +18,10 @@ class IndexView(TemplateView):
         context['name'] = 'Marzieh'
         return context
 
-class PostListView(ListView):
+class PostListView(PermissionRequiredMixin,ListView):
     # model = Post
     # queryset = Post.objects.all()
+    permission_required = 'blog.view_post'
     def get_queryset(self):
         posts= Post.objects.filter(status=True)
         return posts
