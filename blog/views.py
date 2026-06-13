@@ -62,6 +62,3 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
     success_url = "/blog/post/"
 
-@api_view()
-def api_list_view(request):
-    return Response("OK")
