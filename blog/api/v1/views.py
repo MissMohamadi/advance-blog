@@ -20,7 +20,7 @@ def postList(request):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(["GET", "PUT"])
+@api_view(["GET", "PUT", "DELETE"])
 def postDetail(request,id):
     post = get_object_or_404(Post, pk=id)
     if request.method == "GET":
@@ -31,6 +31,9 @@ def postDetail(request,id):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+    elif request.method == "DELETE":
+        post.delete()
+        return Response({"detail": "Post deleted successfully"})
 
 
 
